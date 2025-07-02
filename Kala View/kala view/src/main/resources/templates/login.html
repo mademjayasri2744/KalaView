@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="shortcut icon" type="image/png" th:href="@{/img/favicon.png}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/img/d14142bd-74a0-4947-bf8d-a40c2e28d2ac.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .login-container {
+            background: #6e6b6a;
+            border-radius: 20px;
+            padding: 40px 35px;
+            width: 100%;
+            max-width: 400px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .login-container h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+        }
+
+        .btn {
+            background-color: orangered;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: red;
+        }
+
+        .alert {
+            padding: 10px;
+            background-color: #ff4d4d;
+            border-radius: 6px;
+            color: white;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 13px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h1>Login</h1>
+
+    <p class="alert" th:if="${param.error}">Invalid email or password.</p>
+
+    <form th:action="@{/login}" method="post">
+        <input type="text" placeholder="Email Address" name="username" id="username" required autofocus>
+        <input type="password" placeholder="Password" name="password" id="password" required>
+
+        <button class="btn" type="submit">Sign In</button>
+
+        <p>Not a user yet? <a th:href="@{/register}">Click here</a></p>
+    </form>
+</div>
+
+</body>
+</html>
